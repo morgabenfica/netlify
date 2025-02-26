@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terapia Reiki - Espaço Religare</title>
+    <link rel="stylesheet" href="reiki.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        function validarFormulario() {
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+            var terapia = document.getElementById('terapia').value;
+            var whatsapp = document.getElementById('whatsapp').value;
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Por favor, insira um endereço de e-mail válido.");
+                return false;
+            }
+
+            var telefoneRegex = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
+            if (!telefoneRegex.test(whatsapp)) {
+                alert("Por favor, insira um número de WhatsApp válido no formato (XX) XXXXX-XXXX ou (XX) XXXX-XXXX.");
+                return false;
+            }
+
+            if (nome == "" || email == "" || terapia == "0" || whatsapp == "") {
+                alert("Por favor, preencha todos os campos obrigatórios.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="capa_reiki.png" alt="Capa do Portfólio" class="capa">
+        <div class="menu">
+            <span class="menu-icon">&#9776;</span>
+            <span class="menu-text" onclick="toggleMenu()">MENU</span>
+            <nav id="menu-consult" class="hidden">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="terapias.html">Consultas</a></li>
+                    <li><a href="contatos.html">Contatos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <script>
+        function toggleMenu() {
+            var menuItems = document.getElementById("menu-consult");
+            if (menuItems.classList.contains("hidden")) {
+                menuItems.classList.remove("hidden");
+            } else {
+                menuItems.classList.add("hidden");
+            }
+        }
+    </script>
+    <section></section>
+    <section name="texto">
+        <p>Reiki é uma terapia energética de cura natural; a palavra Reiki significa Energia Vital Universal, ou seja, Reiki é a energia da vida, que forma todos os seres. Essa terapia age em todo o nosso organismo, regenerando células e promovendo cura onde é necessário. Ele age nos chacras (canais energéticos do corpo), agindo não apenas no corpo físico, mas em todos os corpos sutis que nós possuímos. 
+        </p>
+        <h1>Benefícios do Reiki:</h1>
+        <ul> 
+            <li>Redução da ansiedade e estresse, promovendo profunda sensação de relaxamento, de paz e tranquilidade;</li>
+            <li>Diminui a impulsividade e aumenta a criatividade;</li>
+            <li>Equilíbrio hormonal;</li>
+            <li>Equilíbrio emocional e autocontrole;</li>
+            <li>Alivia os sintomas de Síndrome do Pânico e Depressão;</li>
+            <li>Diminui toxinas do organismo;</li>
+            <li>Melhora a qualidade do sono, melhora a circulação sanguínea e proporciona o alívio de dores;</li>
+            <li>Fortalece a imunidade.</li>
+        </ul>
+    </section>
+    <br>
+    <p><i>Agende sua consulta pelo formulário abaixo:</i></p>
+    <br><br><br>
+    <div class="form-container">
+        <form method="post" action="/functions/enviar_formulario.php" onsubmit="return validarFormulario()">
+        <!-- <form method="post" action="/meu_projeto/api/enviar_formulario.php" onsubmit="return validarFormulario()">
+            <form method="post" action="api\enviar_formulario.php" onsubmit="return validarFormulario()"> -->
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="terapia">Selecionar consulta:</label>
+                <select id="terapia" name="terapia" required>
+                    <option value="0">-------------------</option>
+                    <option value="1">Aromaterapia</option>
+                    <option value="2">Cristaloterapia</option>
+                    <option value="3">Reiki</option>
+                    <option value="4">Runas</option>
+                    <option value="5">Taromancia</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="observacao">Observação:</label>
+                <textarea id="observacao" name="observacao"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="whatsapp">Whatsapp:</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(XX) XXXXX-XXXX" pattern="\(\d{2}\)\s\d{4,5}-\d{4}" maxlength="15" required>
+            </div>
+            <button type="submit">ENVIAR</button>
+        </form>
+    </div>
+    <footer id="contato">
+        <div class="left-side">
+            <a href="index.html">
+                <img src="logo_rodape.png" alt="logo do site" class="logo">
+            </a>
+            <div class="copy">
+                &copy; Copyright - Todos os Direitos Reservados.
+            </div>
+        </div>
+        <div class="social-links copy">
+            Redes Sociais:
+            <a href="https://www.whatsapp.com" target="_blank" class="termoslink">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" class="termoslink">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="termoslink">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com" target="_blank" class="termoslink">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        <div class="right-side">
+            <div class="copy">
+                &copy; Feito por: Morgana Benfica.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
